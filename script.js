@@ -33,11 +33,14 @@ function sendWhatsAppMessage(name, mobile, room, hostel, quantity, totalAmount, 
     window.open(`https://wa.me/7668607168?text=${encodeURIComponent(message)}`, "_blank");
 }
 
+
+let upiID = "universebhaijan111-1@oksbi";
 const upiApps = {
-    gpay: "upi://pay?pa=universebhaijan111-1@oksbi&pn=santoshbohra&am=15&cu=INR",
-    phonepe: "phonepe://pay?pa=7668607168@upi&pn=santoshbohra&am=15&cu=INR",
-    paytm: "paytmmp://pay?pa=7668607168@upi=santoshbohra&am=15&cu=INR"
+    gpay: `upi://pay?pa=${upiID}&pn=${name}&am=${totalAmount}&cu=INR`,
+    phonepe: `phonepe://pay?pa=${upiID}&pn=${name}&am=${totalAmountt}&cu=INR`,
+    paytm: `paytmmp://pay?pa=${upiID}&pn=${name}&am=${totalAmount}&cu=INR`
 };
+
 
 document.querySelectorAll(".upi-button").forEach(button => {
     button.addEventListener("click", function () {

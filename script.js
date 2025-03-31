@@ -39,16 +39,19 @@ function sendWhatsAppMessage(name, mobile, room, hostel, quantity, totalAmount, 
 // Function to setup UPI links dynamically
 function setupUPILinks(name, totalAmount) {
     let upiID = "kanyalritik87-1@okhdfcbank";
-    
+
+    // Standard UPI Payment Link Format
+    const baseUPILink = `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&mc=0000&tid=TXN123456&tr=ORDER123&tn=Order+Payment&am=${totalAmount}&cu=INR`;
+
     const upiApps = {
-        gpay: `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${totalAmount}&cu=INR`,
-        phonepe: `phonepe://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${totalAmount}&cu=INR`,
-        paytm: `paytmmp://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${totalAmount}&cu=INR`
+        gpay: `intent://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&mc=0000&tid=TXN123456&tr=ORDER123&tn=Order+Payment&am=${totalAmount}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end;`,
+        phonepe: `phonepe://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&mc=0000&tid=TXN123456&tr=ORDER123&tn=Order+Payment&am=${totalAmount}&cu=INR`,
+        paytm: `paytmmp://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&mc=0000&tid=TXN123456&tr=ORDER123&tn=Order+Payment&am=${totalAmount}&cu=INR`
     };
 
     document.querySelectorAll(".upi-button").forEach(button => {
         button.addEventListener("click", function () {
-            const upiLink = upiApps[this.id];
+            const upiLink = upiApps[this.id] || baseUPILink;
             window.location.href = upiLink;
         });
     });

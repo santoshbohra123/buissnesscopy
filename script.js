@@ -1,3 +1,4 @@
+
 document.getElementById("order-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -26,6 +27,8 @@ document.getElementById("order-form").addEventListener("submit", function (event
             document.getElementById("upi-section").style.display = "block";
         }
     };
+
+    setupUPILinks(name, totalAmount);
 });
 
 function sendWhatsAppMessage(name, mobile, room, hostel, quantity, totalAmount, paymentMethod, transactionId = "") {
@@ -33,27 +36,39 @@ function sendWhatsAppMessage(name, mobile, room, hostel, quantity, totalAmount, 
     window.open(`https://wa.me/7668607168?text=${encodeURIComponent(message)}`, "_blank");
 }
 
+// Function to setup UPI links dynamically
+function setupUPILinks(name, totalAmount) {
+    let upiID = "universebhaijan111-1@oksbi";
+    
+    const upiApps = {
+        gpay: `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${totalAmount}&cu=INR`,
+        phonepe: `phonepe://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${totalAmount}&cu=INR`,
+        paytm: `paytmmp://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${totalAmount}&cu=INR`
+    };
 
-let upiID = "universebhaijan111-1@oksbi";
-const upiApps = {
-    gpay: `upi://pay?pa=${upiID}&pn=${name}&am=${totalAmount}&cu=INR`,
-    phonepe: `phonepe://pay?pa=${upiID}&pn=${name}&am=${totalAmountt}&cu=INR`,
-    paytm: `paytmmp://pay?pa=${upiID}&pn=${name}&am=${totalAmount}&cu=INR`
-};
-
-
-document.querySelectorAll(".upi-button").forEach(button => {
-    button.addEventListener("click", function () {
-        const upiLink = upiApps[this.id];
-        window.location.href = upiLink;
+    document.querySelectorAll(".upi-button").forEach(button => {
+        button.addEventListener("click", function () {
+            const upiLink = upiApps[this.id];
+            window.location.href = upiLink;
+        });
     });
-});
+}
 
 document.getElementById("send-details").addEventListener("click", function () {
     const transactionId = document.getElementById("transaction-id").value.trim();
     if (transactionId.length >= 10) {
-        sendWhatsAppMessage(document.getElementById("name").value, document.getElementById("mobile").value, document.getElementById("room").value, document.getElementById("hostel").value, document.getElementById("quantity").value, document.getElementById("total-amount").textContent, "UPI", transactionId);
+        sendWhatsAppMessage(
+            document.getElementById("name").value,
+            document.getElementById("mobile").value,
+            document.getElementById("room").value,
+            document.getElementById("hostel").value,
+            document.getElementById("quantity").value,
+            document.getElementById("total-amount").textContent,
+            "UPI",
+            transactionId
+        );
     } else {
         alert("Please enter a valid 10-digit Transaction ID.");
     }
 });
+

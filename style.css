@@ -1,0 +1,66 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .submit-btn, .pay-now-btn, #send-details {
+    background-color: #ffcc00;
+  }
+  
+  .submit-btn:hover, .pay-now-btn:hover, #send-details:hover {
+    background-color: #ff9900;
+  }
+  
+  .upi-button {
+    background-color: #4CAF50;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .upi-button:hover {
+    background-color: #45a049;
+  }
+  

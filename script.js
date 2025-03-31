@@ -38,7 +38,7 @@ function sendWhatsAppMessage(name, mobile, room, hostel, quantity, totalAmount, 
 
 // Function to setup UPI links dynamically
 function setupUPILinks(name, totalAmount) {
-    let upiID = "universebhaijan111-1@oksbi";
+    let upiID = "kanyalritik87-1@okhdfcbank";
     
     const upiApps = {
         gpay: `upi://pay?pa=${upiID}&pn=${encodeURIComponent(name)}&am=${totalAmount}&cu=INR`,

@@ -34,9 +34,9 @@ function sendWhatsAppMessage(name, mobile, room, hostel, quantity, totalAmount, 
 }
 
 const upiApps = {
-    gpay: "upi://pay?pa=yourUPIID@upi&pn=YourName&am=15&cu=INR",
-    phonepe: "phonepe://pay?pa=yourUPIID@upi&pn=YourName&am=15&cu=INR",
-    paytm: "paytmmp://pay?pa=yourUPIID@upi&pn=YourName&am=15&cu=INR"
+    gpay: "upi://pay?pa=7668607168@upi&pn=RiteshKanyal&am=15&cu=INR",
+    phonepe: "phonepe://pay?pa=7668607168@upi&pn=RiteshKanyal&am=15&cu=INR",
+    paytm: "paytmmp://pay?pa=7668607168@upi=RiteshKanyal&am=15&cu=INR"
 };
 
 document.querySelectorAll(".upi-button").forEach(button => {

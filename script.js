@@ -39,12 +39,12 @@ function sendWhatsAppMessage(name, mobile, room, hostel, quantity, totalAmount, 
 //     paytm: "paytmmp://pay?pa=7668607168@upi=santoshbohra&am=15&cu=INR"
 // };
 
-document.querySelectorAll(".upi-button").forEach(button => {
-    button.addEventListener("click", function () {
-        const upiLink = upiApps[this.id];
-        window.location.href = upiLink;
-    });
-});
+// document.querySelectorAll(".upi-button").forEach(button => {
+//     button.addEventListener("click", function () {
+//         const upiLink = upiApps[this.id];
+//         window.location.href = upiLink;
+//     });
+// });
 
 // document.getElementById("send-details").addEventListener("click", function () {
 //     const transactionId = document.getElementById("transaction-id").value.trim();
@@ -93,13 +93,46 @@ function payWith(app) {
         appURL = `intent://pay?pa=${upiID}&pn=${name}&am=${amount}&cu=INR#Intent;scheme=upi;package=net.one97.paytm;end;`;
     }
 
+    // Open UPI Payment Link
     window.location.href = appURL;
 
-    // Show UPI QR Code Section
+    // Show QR Code as a fallback
     document.getElementById("upi-section").style.display = "block";
+    document.getElementById("qrcode").innerHTML = ""; // Clear previous QR code
     new QRCode(document.getElementById("qrcode"), {
         text: upiURL,
         width: 150,
         height: 150
     });
 }
+
+// function payWith(app) {
+//     const amount = document.getElementById("amount").value.trim();
+//     if (!amount || amount <= 0) {
+//         alert("Please enter a valid amount.");
+//         return;
+//     }
+
+//     const upiID = "7668607168@upi";
+//     const name = "Ritesh Kanyal";
+//     const upiURL = `upi://pay?pa=${upiID}&pn=${name}&am=${amount}&cu=INR`;
+
+//     let appURL = "";
+//     if (app === "gpay") {
+//         appURL = `intent://pay?pa=${upiID}&pn=${name}&am=${amount}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end;`;
+//     } else if (app === "phonepe") {
+//         appURL = `intent://pay?pa=${upiID}&pn=${name}&am=${amount}&cu=INR#Intent;scheme=upi;package=com.phonepe.app;end;`;
+//     } else if (app === "paytm") {
+//         appURL = `intent://pay?pa=${upiID}&pn=${name}&am=${amount}&cu=INR#Intent;scheme=upi;package=net.one97.paytm;end;`;
+//     }
+
+//     window.location.href = appURL;
+
+//     // Show UPI QR Code Section
+//     document.getElementById("upi-section").style.display = "block";
+//     new QRCode(document.getElementById("qrcode"), {
+//         text: upiURL,
+//         width: 150,
+//         height: 150
+//     });
+// }

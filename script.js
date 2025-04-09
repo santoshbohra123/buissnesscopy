@@ -70,8 +70,6 @@ document.getElementById("send-details").addEventListener("click", function () {
             "UPI",
             transactionId
         );
-    } else {
-        alert("Please enter a valid 10-digit Transaction ID.");
     }
 });
 
